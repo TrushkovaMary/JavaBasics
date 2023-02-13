@@ -10,8 +10,9 @@ class Main {
         FileReader reader = new FileReader("C:\\Users\\True._.Mary\\IdeaProjects\\JavaBasics\\src\\Calculator\\input.txt");
         Scanner sc = new Scanner(reader);
         while (sc.hasNext()){
-            String[] rowArray = sc.nextLine().split(" ");
-            writer.write(calc(rowArray)+"\n");
+            String expression = sc.nextLine();
+            String[] rowArray = expression.split(" ");
+            writer.write(expression+" = "+calc(rowArray)+"\n");
         }
         sc.close();
         reader.close();
