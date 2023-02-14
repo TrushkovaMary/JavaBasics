@@ -18,7 +18,6 @@ public class Snowman extends JFrame {
     public static void main(String[] args) {
         new Snowman();
     }
-
 }
 
 class Canvas extends JPanel {
