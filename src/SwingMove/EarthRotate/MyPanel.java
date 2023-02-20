@@ -22,23 +22,28 @@ public class MyPanel extends JPanel {
     private int panelWidth = 600;
     private int panelHeight = 600;
     private double angle = 0;
+    private int deltaX = 0;
+    private int deltaY = 0;
     private int radius;
     MyPanel(){
         this.setPreferredSize(new Dimension(600, 600));
         loadImage();
         setSun();
-        setEarth();
+        setFirstEarth();
         start();
     }
     private void setSun(){
         xSun = panelWidth/2 - imageWidthSun/2;
         ySun = panelHeight/2 - imageHeightSun/2;
     }
+    private void setFirstEarth(){
+        radius = Math.max(panelHeight,panelWidth)/2 - Math.max(imageHeightSun, imageWidthSun);
+        deltaX = panelWidth/2-imageWidthEarth/2;
+        deltaY = panelHeight/2-imageHeightEarth/2;
+    }
     private void setEarth(){
-
-        radius = panelHeight/2 - imageHeightSun/2;
-        xEarth = xSun+imageWidthEarth/2+(int) (radius*Math.cos(angle));
-        yEarth = ySun+imageHeightSun/2+(int) (radius*Math.sin(angle));
+        xEarth = deltaX + (int) (radius*Math.cos(angle));
+        yEarth = deltaY + (int) (radius*Math.sin(angle));
     }
     public void loadImage(){
         try {
@@ -46,7 +51,7 @@ public class MyPanel extends JPanel {
             imageWidthEarth = imageEarth.getWidth();
             imageHeightEarth = imageEarth.getHeight();
 
-            imageSun = ImageIO.read(new File("C:\\Users\\True._.Mary\\IdeaProjects\\JavaBasics\\src\\SwingMove\\EarthRotate\\Sun.png"));
+            imageSun = ImageIO.read(new File("C:\\Users\\True._.Mary\\IdeaProjects\\JavaBasics\\src\\SwingMove\\EarthRotate\\sun2.png"));
             imageWidthSun = imageSun.getWidth();
             imageHeightSun = imageSun.getHeight();
         }catch (Exception e){
